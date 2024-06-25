@@ -1,0 +1,22 @@
+<% if user_signed_in? %>
+            <li>
+              <%= link_to user_path, class:"nav-link text-light" do%>
+               <i class="fa-solid fa-house"></i> Home
+              <% end %>
+            </li>
+            <li>
+              <%= link_to users_path, class:"nav-link text-light" do%>
+                <i class="fa-solid fa-users"></i> Users
+              <% end %>
+            </li>
+            <li>
+              <%= link_to user_path, class:"nav-link text-light" do%>
+                <i class="fa-solid fa-books"></i> Books
+              <% end %>
+            </li>
+            <li>
+              <%= link_to destroy_user_session_path, class:"nav-link text-light" do%>
+                <i class="fa-solid fa-sign-out"></i> Log out
+              <% end %>
+            </li>
+          <% else %>

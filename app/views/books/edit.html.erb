@@ -1,0 +1,41 @@
+<script src="https://kit.fontawesome.com/1b378e5738.js" crossorigin="anonymous"></script>
+<header>
+<div class='container px-5 px-sm-0'>
+	<div class='row'>
+	  <div class='offset-md-4 col-md-8'>
+<h2>Editing Book</h2>
+<% if @book.errors.any? %>
+<%= @book.errors.count %>error prohibited this obj from being saved:
+<ul>
+    <% @book.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+</ul>
+<% end %>
+
+<%= form_with model: @book do |f| %>
+<table>
+<tr>
+ <td> <label for="inputTitle">Title</label></td>
+</tr>  
+<tr>
+  <td><%= f.text_field :title, id: "inputTitle" %></td>
+</tr>  
+</table>
+<table>
+<tr>
+  <td><label for="inputOpinion">Opinion</label></td>
+</tr>
+<tr>
+ <td><%= f.text_area :body, id: "inputOpinion" %> </td> 
+</tr>
+<tr>
+  <td><%= f.submit "Update Book", class: "btn btn-secondary" %></td>
+</tr>
+</table>
+  
+<% end %>
+<%=link_to 'Show', book_path(@book.id) %> | <%=link_to 'Back', "/books" %>
+</div>
+</div>
+</div>

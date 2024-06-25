@@ -1,0 +1,48 @@
+<script src="https://kit.fontawesome.com/1b378e5738.js" crossorigin="anonymous"></script>
+<div>
+  <%= flash[:notice] %>
+</div>
+
+<!--部分テンプレート-->
+<div class='container px-5 px-sm-0'>
+	<div class='row'>
+	  <div class='col-md-3'>
+
+
+<%= render 'books/user-info', user: @user %>
+<%= render 'books/new-book', book: @book_new %>
+
+    </div>
+<div class='col-md-8 offset-md-1'>
+	    <h2>Book detail</h2>
+	    <table class='table table-hover table-inverse'>
+
+	      <tbody>
+
+	      	 <tr>
+	      	  <td><%= link_to (image_tag @book.user.get_profile_image(100,100)), user_path(@book.user) %>
+	      	      <%= link_to @book.user.name, user_path(@book.user) %>
+	      	  </td>
+
+	      	  <td><%= link_to @book.title, book_path(@book) %></td>
+
+              <td><%= @book.body %></td>
+
+              <td>
+              <% if @book.user == current_user %>	
+               <%= link_to 'Edit', edit_book_path(@book.id), class: "btn btn-secondary" %>
+              <% end %>
+              </td>
+
+              <td>
+              	<% if @book.user == current_user %>
+                 <%= link_to "Destroy", book_path(@book.id), class: "btn btn-secondary", method: :delete, "data-confirm" => "本当に消しますか？" %>
+                <% end %> 
+              </td>
+	      	 </tr>
+
+	      </tbody>
+	    </table>
+</div>
+	</div>
+</div
